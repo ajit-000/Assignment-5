@@ -7,7 +7,7 @@ pipeline{
      stages{
           stage('git' ){
             steps{
-            git credentialsId:'github',url:'https://github.com/ajit-000/Assignment-5.git'
+            git credentialsId:'git',url:'https://github.com/ajit-000/Assignment-5.git'
                  }
             }
           stage('build'){

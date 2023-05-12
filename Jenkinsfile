@@ -1,25 +1,20 @@
-
-pipeline{
+pipeline {
     agent any
-     stages{
-          stage('git' ){
-            steps{
-            git credentialsId:'github',url:'https://github.com/ajit-000/Assignment-5.git'
-                 }
+    stages {
+        stage('Build') {
+            steps {
+                bat 'echo "Building the application..."'
             }
-          stage('build'){
-            steps{
-            bat 'mvn -f  Assignment-5/pom.xml clean install'
-                 }
+        }
+        stage('Test') {
+            steps {
+                bat 'echo "Running tests..."'
             }
-
-          stage('code quality'){
-            steps{
-            withSonarQubeEnv('sonarQube'){
-            bat 'mvn -f Assignment-5/pom.xml sonar:sonar'
-                 }
-           }
-         }
-     }
+        }
+        stage('Deploy') {
+            steps {
+                bat 'echo "Deploying the application..."'
+            }
+        }
+    }
 }
-    
